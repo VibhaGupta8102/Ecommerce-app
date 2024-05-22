@@ -8,6 +8,7 @@ import  cors  from "cors";
 import categoryRoutes  from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 //configure env
 dotenv.config();
@@ -32,6 +33,10 @@ app.use('/api/v1/product', productRoutes)
 app.get('/',(req,res)=>{
     res.send("<h1>Welcome to ecommerce app</h1>")
 })
+
+// Define __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //static file
 app.use(express.static(path.join(__dirname, './client/build')))
