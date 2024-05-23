@@ -7,7 +7,7 @@ import authRoutes from './routes/authRoute.js'
 import  cors  from "cors";
 import categoryRoutes  from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
-import path from 'path';
+ import path from 'path';
 import { fileURLToPath } from 'url';
 
 //configure env
@@ -34,21 +34,22 @@ app.get('/',(req,res)=>{
     res.send("<h1>Welcome to ecommerce app</h1>")
 })
 
-// Define __dirname for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+ // Define __dirname for ES modules
+ const  __filename = fileURLToPath(import.meta.url);
+ const  __dirname = path.dirname(__filename);
+  console.log(__dirname)
 
-//static file
-app.use(express.static(path.join(__dirname, 'client/build')))
+ //static file
+ app.use(express.static(path.join(__dirname, '/client/build')))
 
-app.get('*', function(req,res){
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-})
+  //render client
+  app.get("*", function(req,res){
+     res.sendFile(path.join(__dirname, "/client/build/index.html"))})
 
 //PORT
 const PORT= process.env.PORT || 8080;
 
 //run listen
 app.listen(PORT,()=>{
-    // console.log(`Server running on ${process.env.DEV_MODE} mode on ${PORT}`.bgCyan.white)
+     console.log(`Server running on ${process.env.DEV_MODE} mode on ${PORT}`.bgCyan.white)
 })
