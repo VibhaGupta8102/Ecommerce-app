@@ -30,7 +30,7 @@ app.use('/api/v1/category', categoryRoutes)
 app.use('/api/v1/product', productRoutes)
 
 //rest api 
-app.get('/dashboard',(req,res)=>{
+app.get('/homepage',(req,res)=>{
     res.send("<h1>Welcome to ecommerce app</h1>")
 })
 
